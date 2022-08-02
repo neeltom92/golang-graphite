@@ -9,9 +9,9 @@ import (
 
 func init() {
 
-	host := "172.31.183.235"
+	host := "graphite.server.endpoint" // replace this endpoint with the actual Graphite server endpoint
 
-	port := 2008
+	port := 2003 // Graphite server port
 
 	var err error
 
@@ -28,30 +28,22 @@ func sliCalculation(apiEndpoint string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Println("The status code we got is:", resp.StatusCode)
 	value := 1
-
 	if resp.StatusCode == 200 {
 		value = 1
-
 		err = Graphite.SimpleSend("http.response.code", fmt.Sprintf("%v", value))
 		if err != nil {
 			fmt.Println(err)
 		}
 	} else {
-
 		value = 0
 		err = Graphite.SimpleSend("http.response.code", fmt.Sprintf("%v", value))
 		if err != nil {
 			fmt.Println(err)
 		}
 	}
-
 }
 
 func main() {
-	sliCalculation("https://test.exmaple.com")
-	fmt.Println("\n")
-
+	sliCalculation("http://api.example.com") // replace the endpoint with actual endpoint
 }
