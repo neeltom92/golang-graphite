@@ -45,5 +45,5 @@ func sliCalculation(apiEndpoint string) {
 }
 
 func main() {
-	sliCalculation("http://api.example.com") // replace the endpoint with actual endpoint
+	sliCalculation("https://api.example.com") // replace the endpoint with actual endpoint
 }
